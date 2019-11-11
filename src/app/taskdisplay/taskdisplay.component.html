@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="col-md-3" >
+    <input  class="form-control" #f (keyup)="search(f.value)" type="text" placeholder="Enter ID"><br/>
+    </div>
+
+
+     <br/>
+    <br/>
+    <div class="col-md-9">
+
+       <div class="row">
+
+         <table class="table" >
+           <thead>
+             <th>Id</th>
+             <th>Title</th>
+             <th>Status</th>
+<th>Action</th>
+          </thead>
+    <tbody>
+      <tr *ngFor="let item of arr" >
+        <td>{{item.Id}}</td>
+        <td>{{item.Title}}</td>
+        <td>{{item.Status}}</td>
+        <td><button class="btn btn-danger" (click)="onTaskDelete(item)" >Delete</button>
+        <button class="btn btn-info" (click)="onTaskEdit(item)"  >edit</button></td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+</div>
+</div>

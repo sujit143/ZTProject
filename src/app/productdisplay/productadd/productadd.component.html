@@ -1,0 +1,32 @@
+<div class="container">
+  <form (ngSubmit)="onSaveProduct(f)"   #f="ngForm" >
+    <div class="form-group">
+      <Label>Product Name</Label>
+      <input name="pro_name"  ngModel class="form-control" placeholder="Enter Product Name">
+
+    </div>
+    <div class="form-group">
+      <Label>Product price</Label>
+      <input name="pro_price" ngModel type="number" class="form-control" placeholder="Enter Product price">
+    </div>
+    <div class="form-group">
+      <Label>Product Desc</Label>
+      <input name="pro_desc" ngModel class="form-control" placeholder="Enter Product Desc">
+    </div>
+    <div class="form-group">
+      <Label>Product Qty</Label>
+      <input name="pro_qty" ngModel type="number" class="form-control" placeholder="Enter Product Qty">
+    </div>
+    <div class="form-group">
+      <Label>Product mfg</Label>
+      <input name="pro_mfg" ngModel class="form-control" placeholder="Enter Product mfg">
+    </div>
+    <div class="form-group">
+      <Label>Product Img Path</Label>
+      <input name="pro_img" ngModel class="form-control" placeholder="Enter Product Img">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add New Product</button>
+    </div>
+  </form>
+</div>

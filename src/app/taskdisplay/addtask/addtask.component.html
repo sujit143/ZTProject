@@ -1,0 +1,26 @@
+<div class="container">
+    <h1> add Task </h1>
+    <form  [formGroup]="addtask" (ngSubmit)="onSaveTask()" >
+  
+      <div class="form-group">
+          <Label>Id</Label>
+          <input formControlName="Id"  type="text" class="form-control" placeholder="Enter Id">
+          <label class="alert alert-danger" *ngIf="addtask.get('Id').hasError('required') && !addtask.get('Id').pristine" >Id is required.</label>
+        </div>
+        <div>
+        <Label>Task Name</Label>
+        <input formControlName="Title"  type="text" class="form-control" placeholder="Enter Title">
+        <label class="alert alert-danger" *ngIf="addtask.get('Title').hasError('required') && !addtask.get('Title').pristine" >tile is required.</label>
+  
+      </div>
+      <div class="form-group">
+        <Label>Status</Label>
+        <input formControlName="Status"  type="text" class="form-control" placeholder="Enter Status">
+        <label class="alert alert-danger" *ngIf="addtask.get('Status').hasError('required') && !addtask.get('Status').pristine" >Status is required.</label>
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="form-control  btn btn-primary">Add New Task</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,66 @@
+<ul class="nav justify-content-end">
+    <h4 class="header">Edit Articles</h4>
+    <li class="nav-item">
+      <a class="nav-link active" [routerLink]="['/dashboard']" routerLinkActive="router-link-active"><span class='fa fa-group'></span> Dashboard</a>
+    </li>
+    <div class="vertical">
+
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/knowledge-base/myarticle']" routerLinkActive="router-link-active"><span class='fa fa-list'></span>My Articles</a>
+    </li>
+    <div class="vertical">
+
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/knowledge-base/add']" routerLinkActive="router-link-active"><span class='fa fa-book'></span>Add Articles</a>
+    </li>
+    <div class="vertical">
+
+    </div>
+  </ul>
+
+<div class="main-content">
+  <div class="container-fluid second-card">
+    <form [formGroup]="editForm" (ngSubmit)="onEditArticle()">
+      <div class="container">
+        <br />
+        <table class="table table-bordered " style="margin-left: 0px !important;">
+          <tbody>
+            <tr>
+              <td style="width:150px;"> Article Name<span style="color:red">*</span></td>
+              <td><input type="text" formControlName="ArticleName"></td>
+            </tr>
+            <tr>
+              <td>category</td>
+              <!-- [compareWith]="compareFn" [formControl]="selectedCountriesControl" -->
+              <td>
+                <select formControlName="CategoryId" class="custom-select">
+                  <option value="">Choose your category
+                  </option>
+                  <option *ngFor="let item of arr" [value]="item.categoryId">{{item.categoryName}}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Description</td>
+            </tr>
+          </tbody>
+        </table>
+        <ejs-richtexteditor formControlName="Content" class="box"></ejs-richtexteditor>
+        <br>
+      </div>
+      <div>
+        <button class="btn btn-primary">Save</button>&nbsp;&nbsp;
+        <button class="btn btn-warning">Close</button>
+      </div>
+      <br />
+      <!-- </div> -->
+    </form>
+  </div>
+  <div class="vertical-line">
+
+</div>
+</div>
+
+

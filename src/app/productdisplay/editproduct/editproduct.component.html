@@ -1,0 +1,34 @@
+
+<div class="container">
+  <h1>Edit Product</h1>
+    <form (ngSubmit)="onEditProduct(f)"   #f="ngForm" >
+      <div class="form-group">
+        <Label>Product Name</Label>
+        <input name="pro_name"  [(ngModel)]="name" class="form-control" placeholder="Enter Product Name">
+
+      </div>
+      <div class="form-group">
+        <Label>Product price</Label>
+        <input name="pro_price" [(ngModel)]="price" type="number" class="form-control" placeholder="Enter Product price">
+      </div>
+      <div class="form-group">
+        <Label>Product Desc</Label>
+        <input name="pro_desc" [(ngModel)]="desc" class="form-control" placeholder="Enter Product Desc">
+      </div>
+      <div class="form-group">
+        <Label>Product Qty</Label>
+        <input name="pro_qty" [(ngModel)]="qty" type="number" class="form-control" placeholder="Enter Product Qty">
+      </div>
+      <div class="form-group">
+        <Label>Product mfg</Label>
+        <input name="pro_mfg" [(ngModel)]="mfg" class="form-control" placeholder="Enter Product mfg">
+      </div>
+      <div class="form-group">
+        <Label>Product Img Path</Label>
+        <input name="pro_img" [(ngModel)]="img" class="form-control" placeholder="Enter Product Img">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Product</button>
+      </div>
+    </form>
+  </div>

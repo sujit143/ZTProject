@@ -1,0 +1,42 @@
+
+<div class="container">
+
+  <h1>Sign Up Form</h1>
+  <form [formGroup]="signup" (ngSubmit)="onUserSave()">
+    <div class="form-group">
+      <label>User Email</label>
+      <input formControlName="user_email" type="text" class="form-control" placeholder="Enter Email address">
+      <label class="alert alert-danger" *ngIf="signup.get('user_email').hasError('required') && !signup.get('user_email').pristine" >Email is required.</label>
+      <label class="alert alert-danger"  *ngIf="signup.get('user_email').hasError('email')">Email is invalid.</label>
+
+      <label style="color:blue" *ngIf="signup.get('user_email').status=='PENDING'">Checking...</label>
+      <label style="color:green" *ngIf="signup.get('user_email').status=='VALID'">Email is Available</label>
+      <label style="color:red" *ngIf="signup.get('user_email').hasError('emailInUse')">Email is already Taken</label>
+
+    </div>
+    <div class="form-group">
+      <label>User Name</label>
+      <input formControlName="user_name" type="text" class="form-control" placeholder="Enter Name ">
+      <label class="alert alert-danger"  *ngIf="signup.get('user_name').hasError('required') && !signup.get('user_name').pristine " >name is required</label>
+    </div>
+    <div formGroupName="user_password_group" >
+      <div  class="form-group">
+        <label>User password</label>
+        <input formControlName="user_password" class="form-control" placeholder="Enter password ">
+        <label class="alert alert-danger" *ngIf="signup.get('user_password_group').get('user_password').hasError('required') && !signup.get('user_password_group').get('user_password').pristine " >password is required</label>
+      </div>
+      <div class="form-group">
+        <label>User Confirm password</label>
+        <input formControlName="user_confirm_password" class="form-control" placeholder="Enter confirm password ">
+      </div>
+      <label class="alert alert-danger"  *ngIf="signup.get('user_password_group').hasError('passwordNotMatched')" > password error </label>
+    </div>
+    <div class="form-group">
+      <label>User Mobile No</label>
+      <input formControlName="user_mobile_no" type="text" class="form-control" placeholder="Enter mobile no">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="form-control btn btn-primary">Save User</button>
+    </div>
+  </form>
+</div>

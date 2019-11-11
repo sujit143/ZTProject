@@ -1,0 +1,63 @@
+<!-- navbar-menu -->
+<nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <h4 class="font-light m-b-xs titlename">
+            Add Articles
+        </h4>
+
+        <ul class="navbar-nav ml-auto nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="router-link-active"
+                    [routerLinkActiveOptions]={exact:true}><span class='fa fa-group'></span>My Dash board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/knowledge-base']" routerLinkActive="active"
+                    [routerLinkActiveOptions]={exact:true}><span class='fa fa-list'></span>My Articles</a>
+            </li>
+            <!-- <li class="nav-item" routerLinkActive="active"><a  [routerLink]="['/knowledge-base/add']">
+                <span class='fa fa-plus-circle'></span>Add Article</a>
+            </li> -->
+        </ul>
+    </div>
+</nav>
+<!--navbar-menu end-->
+ <div class="main-contaner">
+        <p-growl [(value)]="msgs"></p-growl>
+    <form [formGroup]="addForm" (ngSubmit)="onAddArticle()">
+    <div class="container form-box">
+       <br/>
+       <table class="table table-bordered ">
+          <tbody>
+             <tr>
+                <td>category</td>
+                <td>
+                   <select formControlName="category_id" class="custom-select" >
+                      <!-- <option value="">Choose your category</option> -->
+                      <option *ngFor="let item of cat" [value]="item.categoryId">{{item.categoryName}}</option>
+                   </select>
+                </td>
+             </tr>
+             <tr>
+                <td style="width:150px;">Name<span style="color:red">*</span></td>
+                <td><input type="text" formControlName="article_name"></td>
+             </tr>
+             <tr>
+                <td>Description</td>
+             </tr>
+          </tbody>
+       </table>
+       <ejs-richtexteditor formControlName="content" class="box"></ejs-richtexteditor>
+       <br>
+    </div>
+    <div class="container form-box">
+       <div class="row custom-wrapper">
+          <div class="col-md-12 btn-box">
+             <button type="submit" class="btn btn-primary btn-sm-2 text-white btn-save">Save</button>&nbsp;&nbsp;
+             <button type="button" class="btn btn-danger btn-sm-2 text-white btn-cancel" (click)='onClickClose()'>Close</button> <br/>
+          </div>
+       </div>
+    </div>
+    <br/>
+    <!-- </div> -->
+    </form>
+ </div>

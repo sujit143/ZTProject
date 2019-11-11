@@ -1,0 +1,24 @@
+<p>edittask works!</p>
+<div class="container">
+  <h1>Edit Task</h1>
+  <h1>{{id}}</h1>
+    <form (ngSubmit)="onEditTask(f)"   #f="ngForm" >
+        <div class="form-group">
+            <Label>Task Id</Label>
+            <input name="Id"  [(ngModel)]="id" type ="text" class="form-control" placeholder="Enter Title">
+
+          </div>
+      <div class="form-group">
+        <Label>Task Title</Label>
+        <input name="Title"  [(ngModel)]="title" type ="text" class="form-control" placeholder="Enter Title">
+
+      </div>
+      <div class="form-group">
+        <Label>Status</Label>
+        <input name="Status" [(ngModel)]="status" type="text" class="form-control" placeholder="Enter Status">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Task</button>
+      </div>
+    </form>
+  </div>

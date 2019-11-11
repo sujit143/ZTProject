@@ -1,0 +1,130 @@
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+   <div class="positionfix" data-spy="affix">
+      <ul class="nav justify-content-end positionfix">
+         <h4 class="font-light m-b-xs titlename">
+            Knowledge Base{{Article_Header}}
+         </h4>
+         <li class="nav-item">
+            <button class="btn1" [routerLink]="['/hrms']" routerLinkActive="router-link-active" style='margin-left: -100px;' ><span class='fa fa-group'></span> Dashboard</button>
+         </li>
+
+         <li class="nav-item">
+            <button class="btn1" (click)="getAdminArticles()"><span class='fa fa-list'></span>My Articles</button>
+         </li>
+
+         <li class="nav-item">
+            <button class="btn1"  [routerLink]="['/knowledge-base/add']" routerLinkActive="router-link-active"><span class='fa fa-book'></span>Add Articles</button>
+         </li>
+
+      </ul>
+   </div>
+   </nav> -->
+   <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
+
+   <!-- <div class="navbar hidden-tablet hidden-phone">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Brand</a>
+        <div class="nav-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- navbar-menu -->
+<nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse">
+        <h4 class="font-light m-b-xs titlename">
+            Knowledge Base / Articles
+        </h4>
+
+        <ul class="navbar-nav ml-auto nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="router-link-active"
+                    [routerLinkActiveOptions]={exact:true}><span class='fa fa-group'></span>My Dash board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/knowledge-base']" routerLinkActive="active"
+                    [routerLinkActiveOptions]={exact:true}><span class='fa fa-list'></span>My Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/knowledge-base/add']" routerLinkActive="active"
+                    [routerLinkActiveOptions]={exact:true}><span class='fa fa-plus-circle'></span>Add Article</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--navbar-menu end-->
+
+<div class="container-fliud" style="background-color:rgba(246, 242, 242, 0.863);">
+    <div class="row">
+       <div class="first" class="col-md-9"
+          style="display: inline-block; vertical-align: top;border-right:1px solid grey;padding-top:20px">
+          <div>
+             <div id="dvarticlecontainer">
+                <div id="allarticletabview">
+                   <div class="col-md-12" style="padding-bottom:50px;">
+                      <div *ngFor="let item of all_articles ">
+                         <div class="container-fluid">
+                            <img src="/assets/images/profile_img.jpg"
+                               style=" width:65px; border-radius:50%;float:left;" alt="profile-picture">
+                            <div class="mb-2">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;  <h3  class="text-justify">{{item.articleName}}</h3>
+                               <div class="meta-wrap">
+                                  <p class="meta">
+                                     <span style="padding-right:10px;"><i class="icon-calendar mr-2"></i>{{item.createdDate}}</span>
+                                     <span style="padding-right:10px; font-family: initial"><i class="icon-folder-o mr-2"></i> {{item.categoryName}}</span>
+                                     <span style="padding-right:10px;"><i class="fa fa-user"></i>&nbsp;&nbsp;{{item.createdByName}}</span>
+                                  </p>
+                               </div>
+                               &nbsp;&nbsp;&nbsp;&nbsp;    <p class="mb-4" [innerHtml]="item.previewContent"></p>
+                               <p>
+                                  <span style="padding-right:20px;"><button type='button' class="btn btn-primary btn-xs"
+                                     (click)='onReadMore(item)'>Read More</button></span>
+                                  <span style="padding-right:20px;"><button class="btn btn-info btn-xs" (click)='onEditArticle(item)'
+                                  *ngIf="item.createdByName=='Admin Manjunath'"><i class="fa fa-pencil"> </i>Edit</button></span>
+                               </p>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="custompagination pull-right pgArticleList" data-req-url="/KB/GetKBArticles" data-updatecontainer="#dvarticlecontainer">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div>
+
+             <p *ngIf="pageVariable" class="float-right">{{"TatalItems:"+totalItems+"/"+totalItem}}</p>
+          </div>
+          <div class="float-right">
+             <ngb-pagination  *ngIf="pageVariable"      [maxSize]="5"  [collectionSize]="totalItem" [(page)]="Page" [(page)]="page" (pageChange)="loadPage([Page])" currentPage="pagenumber" [rotate]="true" size="sm" [boundaryLinks]="true"></ngb-pagination> <br>
+             <!-- <pre>Current page: {{Page}}</pre> -->
+          </div>
+
+       </div>
+       <div class="first" class="col-md-3" style="background-color:rgba(246, 242, 242, 0.863);display: inline-block; vertical-align: top;padding-top:30px; padding-left:10px">
+          <div id="dvSearch">
+             <app-searcharticle (emit1)="onFilterCheck($event)" (emit2)="onSearchClick($event)"></app-searcharticle>
+          </div>
+       </div>
+    </div>
+ </div>

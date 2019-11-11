@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-md-9">
+      <div class="panel panel-default">
+          <div class="panel-heading">Number of Users</div>
+      <table class="table">
+        <thead>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Mobile No</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of arr">
+            <td>{{item.user_email}}</td>
+            <td>{{item.user_name}}</td>
+            <td>{{item.user_mobile_no}}</td>
+            <td><button class="btn btn-info" (click)="onUserDelete(item)">Delete</button></td>
+            <td><button class="btn btn-info" (click)="onUserEditReactive(item)">Edit user reactive</button></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+</div>
+
+
+
+

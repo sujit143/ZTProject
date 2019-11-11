@@ -1,0 +1,31 @@
+<div class="tab-pane" id="readarticletabview">
+    <div class="row" style="padding:10px">
+    <div class="col-md-12" style="padding:20px;">
+    <div class="hpanel blog-box">
+    <div class="panel-heading">
+    <div class="media clearfix" >
+    <a class="pull-left" >
+    <img src="/assets/images/read_img.jpg" alt="profile-picture" class="avatar" style=" width:65px; border-radius:50%;float:left;">
+    </a>
+    <div class="media-body">
+    <small>Created By:<span class="font-bold"></span> </small>
+    <br>
+    <small class="text-muted">{{arr.createdDate}}</small>
+    <br>
+    <small class="text-muted">
+    </small>
+    </div>
+    </div>
+    </div>
+    <div class="panel-body">
+    <strong> <h3 class=" title">{{arr.articleName}}</h3></strong>
+    <hr>
+    <div>
+    <h2 >{{arr.previewContent}}</h2>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div [innerHtml]="arr.content"></div>
+    </div>
+    <div style="float: right;"><button *ngIf="arr.createdBy==1" class="fa fa-pencil btn btn-info btn-xs" style="background-color: #3498db;" (click)="onEditArticle(arr)">Edit</button> </div>
